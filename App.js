@@ -4,13 +4,17 @@ import HomeScreen from "./screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import WebScreen from "./screens/WebScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 // Create a bottom navigator for the screens
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
   return (
     <NavigationContainer>
+      <Provider store={store}>
         <TailwindProvider>
           <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -55,6 +59,7 @@ export default function App() {
             <Tab.Screen name="FunFact" component={WebScreen} />
           </Tab.Navigator>
         </TailwindProvider>
-      </NavigationContainer>
+      </Provider>
+    </NavigationContainer>
   );
 }
