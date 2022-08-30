@@ -1,22 +1,18 @@
 import { TailwindProvider } from "tailwindcss-react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import WebScreen from "./screens/WebScreen";
-import Icon from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-// const Stack = createNativeStackNavigator();
-
 // Create a bottom navigator for the screens
-const Stack = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
         <TailwindProvider>
-          <Stack.Navigator
+          <Tab.Navigator
             screenOptions={({ route }) => ({
               tabBarShowLabel: false,
               tabBarIcon: ({ focused, color, size }) => {
@@ -53,11 +49,11 @@ export default function App() {
               },
             })}
           >
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Articles" component={WebScreen} />
-            <Stack.Screen name="Courses" component={WebScreen} />
-            <Stack.Screen name="FunFact" component={WebScreen} />
-          </Stack.Navigator>
+            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Articles" component={WebScreen} />
+            <Tab.Screen name="Courses" component={WebScreen} />
+            <Tab.Screen name="FunFact" component={WebScreen} />
+          </Tab.Navigator>
         </TailwindProvider>
       </NavigationContainer>
   );

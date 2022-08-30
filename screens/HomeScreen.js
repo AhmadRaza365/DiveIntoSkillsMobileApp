@@ -3,16 +3,13 @@ import {
   Text,
   Image,
   TextInput,
-  Button,
   Pressable,
   ScrollView,
-  ScrollViewComponent,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Card from "../components/Card";
-import Icon from "react-native-vector-icons/AntDesign";
 
 const HomeScreen = () => {
   const navigate = useNavigation();
