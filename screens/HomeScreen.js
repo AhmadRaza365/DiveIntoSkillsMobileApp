@@ -10,14 +10,20 @@ import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Card from "../components/Card";
+import sanityClient from "../client.js";
 
 const HomeScreen = () => {
   const navigate = useNavigation();
   const [email, setEmail] = useState("");
+  
 
   useLayoutEffect(() => {
     navigate.setOptions({
       headerShown: false,
+    });
+
+    sanityClient.fetch(`*[_type == "post"]`).then((res) => {
+      console.log(res);
     });
   }, []);
 
