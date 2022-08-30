@@ -12,6 +12,7 @@ import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Card from "../components/Card";
+import Icon from "react-native-vector-icons/AntDesign";
 
 const HomeScreen = () => {
   const navigate = useNavigation();
@@ -32,7 +33,8 @@ const HomeScreen = () => {
     },
     {
       id: 2,
-      title: "Master Web Development with amazing resources thatMaster Web Development with amazing resources that",
+      title:
+        "Master Web Development with amazing resources thatMaster Web Development with amazing resources that",
       image:
         "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=2280&h=950&dpr=1",
     },
@@ -62,11 +64,35 @@ const HomeScreen = () => {
     },
   ];
 
+  const funFacts = [
+    {
+      id: 1,
+      title: "Facts",
+      description:
+        "Tons of interesting facts about science, literature, philosophy and other cool topics.",
+      apiProvider: "Ninjas Api",
+    },
+    {
+      id: 2,
+      title: "Quotes",
+      description:
+        "Read nearly endless amount of quotes from famous people throughout history.",
+      apiProvider: "Ninjas Api",
+    },
+    {
+      id: 3,
+      title: "Riddles",
+      description:
+        "Thousands of riddles with answers to tell, share and enjoy with your friends.",
+      apiProvider: "Ninjas Api",
+    },
+  ];
+
   return (
-    <SafeAreaView className="bg-[#fcee21] flex-1 ~pb-16">
+    <SafeAreaView className="bg-[#fcee21] flex-1">
       <ScrollView className="pb-16">
-        <View className="bg-[#f3f4d3] flex-1">
-          <View className="overflow-hidden flex flex-col justify-center ~px-2 ~py-10 relative bg-[#183114]">
+        <View className="bg-[#f3f4d3] flex-1 pb-20">
+          <View className="overflow-hidden flex flex-col justify-center relative bg-[#183114]">
             <Image
               className="absolute top-0 right-0 brightness-50"
               style={{
@@ -98,10 +124,11 @@ const HomeScreen = () => {
                   keyboardType="email-address"
                 />
 
-                <Pressable className="bg-[#fcee21] flex items-center justify-center rounded-r-xl px-2"
-                onPress={() => {
-                  alert("Working on it!");
-                }}
+                <Pressable
+                  className="bg-[#fcee21] flex items-center justify-center rounded-r-xl px-2"
+                  onPress={() => {
+                    alert("Working on it!");
+                  }}
                 >
                   <Text className="text-[#183114] text-base font-bold">
                     Subscribe
@@ -114,31 +141,48 @@ const HomeScreen = () => {
           <Text className="text-center text-[#183114] text-2xl font-bold mt-5 mb-2">
             Latest Articles
           </Text>
-          <ScrollView
-            className="my-3"
-            horizontal={true}
-          >
+          <ScrollView className="my-3" horizontal={true}>
             {data.map((item) => (
-              <Card key={item.id} data={item} />
+              <Card key={item.id} data={item} isArticle={true} />
             ))}
-            
           </ScrollView>
 
           <Text className="text-center text-[#183114] text-2xl font-bold mt-5 mb-2">
             Popular Courses
           </Text>
-          <ScrollView
-            className="my-3"
-            horizontal={true}
-          >
+          <ScrollView className="my-3" horizontal={true}>
             {data.map((item) => (
-              <Card key={item.id} data={item} />
+              <Card key={item.id} data={item} isArticle={false} />
             ))}
-            
           </ScrollView>
-        </View>
-      <View className="bg-[#183114] h-32">
-        
+
+          <View className="">
+            <Text className="text-center text-[#183114] text-2xl font-bold mt-5 mb-2">
+              Fun Facts
+            </Text>
+            <ScrollView className="my-3" horizontal={true}>
+              {funFacts.map((fact) => (
+                <Pressable
+                  key={fact.id}
+                  className="w-48 h-48 mx-3 mt-3 mb-5 items-center justify-center bg-[#183114] py-2 px-3 rounded-xl"
+                  style={{
+                    shadowColor: "#000",
+                    elevation: 8,
+                  }}
+                  onPress={() => {
+                    alert("Working on it!");
+                  }}
+                >
+                  <Text className="text-[#fcee21] text-2xl font-bold my-2">
+                    {fact.title}
+                  </Text>
+                  <Text className="text-[#f3f4d3] text-sm text-justify">
+                    {fact.description}
+                  </Text>
+                </Pressable>
+              ))}
+            </ScrollView>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
