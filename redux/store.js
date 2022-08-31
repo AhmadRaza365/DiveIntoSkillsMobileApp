@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import testReducer from "./slices/testSlice";
+import articlesReducer from "./slices/articlesSlice";
+import coursesReducer from "./slices/coursesSlice";
+import funFactsReducer from "./slices/funFactsSlice";
 
 export const store = configureStore({
   reducer: {
-    test: testReducer,
+    articles: articlesReducer,
+    courses: coursesReducer,
+    funFacts: funFactsReducer,
   },
 });
